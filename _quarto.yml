@@ -1,0 +1,26 @@
+project:
+  type: manuscript
+  output-dir: _manuscript
+
+manuscript:
+  article: index.qmd
+
+execute:
+  freeze: auto
+
+format:
+  html:
+    toc: true
+    anchor-sections: true
+    smooth-scroll: true
+    toc-expand: 2
+    theme:
+      - flatly
+  docx: default
+  pdf:
+    toc: false
+
+pdf-engine: xelatex
+
+
+  
