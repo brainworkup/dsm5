@@ -1,0 +1,2601 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={DSM-5 (ICD-10) Diagnostic Codes and Classifications},
+  pdfauthor={© 2026 American Psychiatric Association. All Rights Reserved},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{DSM-5 (ICD-10) Diagnostic Codes and Classifications}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{September 2025 Updates}
+\author{© 2026 American Psychiatric Association. All Rights Reserved}
+\date{2013-05-18}
+\begin{document}
+\maketitle
+
+
+\subsection{Communication Disorders}\label{communication-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  315.32 (F80.2) Language Disorder
+\item
+  315.39 (F80.0) Speech Sound Disorder
+\item
+  315.35 (F80.81) Childhood-Onset Fluency Disorder (Stuttering)
+\item
+  307.0 (F98.5) Adult-onset fluency disorder
+\item
+  315.39 (F80.82) Social (Pragmatic) Communication Disorder
+\item
+  307.9 (F80.9) Unspecified Communication Disorder
+\item
+  Oral and written language learning disability (OWL-LD)
+\item
+  Specific language impairment (SLI).
+\end{itemize}
+
+\subsection{Autism Spectrum Disorder}\label{autism-spectrum-disorder}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  299.00 (F84.0) Autism Spectrum Disorder
+\end{itemize}
+
+\subsection{Attention-Deficit/Hyperactivity
+Disorder}\label{attention-deficithyperactivity-disorder}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  314.01 (F90.2) Attention-Deficit/Hyperactivity Disorder (ADHD),
+  Combined Presentation
+\item
+  314.00 (F90.0) Attention-Deficit/Hyperactivity Disorder (ADHD),
+  Predominantly Inattentive Presentation
+\item
+  314.01 (F90.1) Attention-Deficit/Hyperactivity Disorder, Predominantly
+  Hyperactive/Impulsive Presentation
+\item
+  314.01 (F90.8) Other Specified Attention-Deficit/Hyperactivity
+  Disorder (ADHD)
+\item
+  314.01 (F90.9) Unspecified Attention-Deficit/Hyperactivity Disorder
+  (ADHD)
+\end{itemize}
+
+\subsection{Specific Learning
+Disorder}\label{specific-learning-disorder}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  315.00 (F81.0) Specific Learning Disorder, With Impairment in Reading
+  (word reading accuracy, reading rate or fluency, reading
+  comprehension)
+\item
+  315.2 (F81.81) Specific Learning Disorder, With Impairment in Written
+  Expression (spelling accuracy, grammar and punctuation accuracy,
+  clarity or organization of written expression)
+\item
+  315.1 (F81.2) Specific Learning Disorder, With Impairment in
+  Mathematics (number sense, memorization of arithmetic facts, accurate
+  or fluent calculation, accurate math reasoning)
+\end{itemize}
+
+\subsection{Motor Disorders}\label{motor-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  315.4 (F82) Developmental Coordination Disorder
+\item
+  307.3 (F98.4) Stereotypic Movement Disorder
+\item
+  307.23 (F95.2) Tourette's Disorder
+\item
+  307.22 (F95.1) Persistent (Chronic) Motor or Vocal Tic Disorder
+\item
+  307.21 (F95.0) Provisional Tic Disorder
+\item
+  307.20 (F95.8) Other Specified Tic Disorder
+\item
+  307.20 (F95.9) Unspecified Tic Disorder
+\end{itemize}
+
+\subsection{Neurodevelopmental
+Disorders}\label{neurodevelopmental-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  317 (F70) Intellectual Disability (Intellectual Developmental
+  Disorder), Mild
+\item
+  318.0 (F71) Intellectual Disability (Intellectual Developmental
+  Disorder), Moderate
+\item
+  318.1 (F72) Intellectual Disability (Intellectual Developmental
+  Disorder), Severe
+\item
+  318.2 (F73) Intellectual Disability (Intellectual Developmental
+  Disorder), Profound
+\item
+  315.8 (F88) Global Developmental Delay
+\item
+  319 (F79) Unspecified Intellectual Disability (Intellectual
+  Developmental Disorder)
+\end{itemize}
+
+\subsection{Other Neurodevelopmental
+Disorders}\label{other-neurodevelopmental-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  315.8 (F88) Other Specified Neurodevelopmental Disorder
+\item
+  315.9 (F89) Unspecified Neurodevelopmental Disorder
+\end{itemize}
+
+\subsection{Unspecified Neurocognitive
+Disorder}\label{unspecified-neurocognitive-disorder}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  799.59 (R41.9) Unspecified Neurocognitive Disorder
+\end{itemize}
+
+\subsection{Other Mental Disorders and Additional
+Codes}\label{other-mental-disorders-and-additional-codes}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  294.8 (F06.8) Other Specified Mental Disorder Due to Another Medical
+  Condition
+\item
+  294.9 (F09) Unspecified Mental Disorder Due to Another Medical
+  Condition
+\item
+  300.9 (F99) Other Specified Mental Disorder
+\item
+  300.9 (F99) Unspecified Mental Disorder
+\item
+  V71.09 (Z03.89) No Diagnosis or Condition
+\end{itemize}
+
+\subsection{Disruptive, Impulse-Control, and Conduct
+Disorders}\label{disruptive-impulse-control-and-conduct-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  313.81 (F91.3) Oppositional Defiant Disorder
+\item
+  312.34 (F63.81) Intermittent Explosive Disorder
+\item
+  312.81 (F91.1) Conduct Disorder, Childhood-onset type
+\item
+  312.82 (F91.2) Conduct Disorder, Adolescent-onset type
+\item
+  312.89 (F91.9) Conduct Disorder, Unspecified onset
+\item
+  301.7 (F60.2) Antisocial Personality Disorder
+\item
+  312.33 (F63.1) Pyromania
+\item
+  312.32 (F63.2) Kleptomania
+\item
+  312.89 (F91.8) Other Specified Disruptive, Impulse-Control, and
+  Conduct Disorder
+\item
+  312.9 (F91.9) Unspecified Disruptive, Impulse-Control, and Conduct
+  Disorder
+\end{itemize}
+
+\subsection{Depressive Disorders}\label{depressive-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  296.99 (F34.81) Disruptive Mood Dysregulation Disorder
+\item
+  296.21 (F32.0) Major Depressive Disorder, Single episode, Mild
+\item
+  296.22 (F32.1) Major Depressive Disorder, Single episode, Moderate
+\item
+  296.23 (F32.2) Major Depressive Disorder, Single episode, Severe
+\item
+  296.24 (F32.3) Major Depressive Disorder, Single episode, With
+  psychotic features
+\item
+  296.25 (F32.4) Major Depressive Disorder, Single episode, In partial
+  remission
+\item
+  296.26 (F32.5) Major Depressive Disorder, Single episode, In full
+  remission
+\item
+  296.20 (F32.9) Major Depressive Disorder, Single episode, Unspecified
+\item
+  296.31 (F33.0) Major Depressive Disorder, Recurrent episode, Mild
+\item
+  296.32 (F33.1) Major Depressive Disorder, Recurrent episode, Moderate
+\item
+  296.33 (F33.2) Major Depressive Disorder, Recurrent episode, Severe
+\item
+  296.34 (F33.3) Major Depressive Disorder, Recurrent episode, With
+  psychotic features
+\item
+  296.35 (F33.41) Major Depressive Disorder, Recurrent episode, In
+  partial remission
+\item
+  296.36 (F33.42) Major Depressive Disorder, Recurrent episode, In full
+  remission
+\item
+  296.30 (F33.9) Major Depressive Disorder, Recurrent episode,
+  Unspecified
+\item
+  300.4 (F34.1) Persistent Depressive Disorder (Dysthymia)
+\item
+  625.4 (F32.81) Premenstrual Dysphoric Disorder
+\item
+  293.83 (F06.31) Depressive Disorder Due to Another Medical Condition,
+  With depressive features
+\item
+  293.83 (F06.32) Depressive Disorder Due to Another Medical Condition,
+  With major depressive---like episode
+\item
+  293.83 (F06.34) Depressive Disorder Due to Another Medical Condition,
+  With mixed features
+\item
+  311 (F32.89) Other Specified Depressive Disorder
+\item
+  311 (F32.9) Unspecified Depressive Disorder
+\end{itemize}
+
+\subsection{Anxiety Disorders}\label{anxiety-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  309.21 (F93.0) Separation Anxiety Disorder
+\item
+  313.23 (F94.0) Selective Mutism
+\item
+  300.29 (F40.218) Specific Phobia, Animal
+\item
+  300.29 (F40.228) Specific Phobia, Natural environment
+\item
+  300.29 (\textbf{\_.}) Specific Phobia, Blood-injection-injury
+\item
+  300.29 (F40.230) Specific Phobia, Fear of blood
+\item
+  300.29 (F40.231) Specific Phobia, Fear of injections and transfusions
+\item
+  300.29 (F40.232) Specific Phobia, Fear of other medical care
+\item
+  300.29 (F40.233) Specific Phobia, Fear of injury
+\item
+  300.29 (F40.248) Specific Phobia, Situational
+\item
+  300.29 (F40.298) Specific Phobia, Other
+\item
+  300.23 (F40.10) Social Anxiety Disorder (Social Phobia)
+\item
+  300.23 (F40.10) Social Anxiety Disorder (Social Phobia), Performance
+  only
+\item
+  300.01 (F41.0) Panic Disorder
+\item
+  300.01 (\textbf{\_.}) Panic Attack Specifier
+\item
+  300.22 (F40.00) Agoraphobia
+\item
+  300.02 (F41.1) Generalized Anxiety Disorder
+\item
+  293.84 (F06.4) Anxiety Disorder Due to Another Medical Condition
+\item
+  300.09 (F41.8) Other Specified Anxiety Disorder
+\item
+  300.00 (F41.9) Unspecified Anxiety Disorder
+\end{itemize}
+
+\subsection{Obsessive-Compulsive and Related
+Disorders}\label{obsessive-compulsive-and-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  300.3 (F42.2) Obsessive-Compulsive Disorder
+\item
+  300.7 (F45.22) Body Dysmorphic Disorder
+\item
+  300.3 (F42.3) Hoarding Disorder
+\item
+  312.39 (F63.3) Trichotillomania (Hair-Pulling Disorder)
+\item
+  698.4 (F42.4) Excoriation (Skin-Picking) Disorder
+\item
+  294.8 (F06.8) Obsessive-Compulsive and Related Disorder Due to Another
+  Medical Condition
+\item
+  300.3 (F42.8) Other Specified Obsessive-Compulsive and Related
+  Disorder
+\item
+  300.3 (F42.9) Unspecified Obsessive-Compulsive and Related Disorder
+\end{itemize}
+
+\subsection{Trauma- and Stressor-Related
+Disorders}\label{trauma--and-stressor-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  313.89 (F94.1) Reactive Attachment Disorder
+\item
+  313.89 (F94.2) Disinhibited Social Engagement Disorder
+\item
+  309.81 (F43.10) Post-Traumatic Stress Disorder
+\item
+  308.3 (F43.0) Acute Stress Disorder
+\item
+  309.0 (F43.21) Adjustment Disorder, With Depressed Mood
+\item
+  309.24 (F43.22) Adjustment Disorder, With Anxiety
+\item
+  309.28 (F43.23) Adjustment Disorder, With Mixed Anxiety And Depressed
+  Mood
+\item
+  309.3 (F43.24) Adjustment Disorder, With Disturbance Of Conduct
+\item
+  309.4 (F43.25) Adjustment Disorder, With Mixed Disturbance Of Emotions
+  And Conduct
+\item
+  309.9 (F43.20) Adjustment Disorder, Unspecified
+\item
+  309.89 (F43.8) Other Specified Trauma- and Stressor-Related Disorder
+\item
+  309.9 (F43.9) Unspecified Trauma- and Stressor-Related Disorder
+\end{itemize}
+
+\subsection{Schizophrenia Spectrum and Other Psychotic
+Disorders}\label{schizophrenia-spectrum-and-other-psychotic-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  301.22 (F21) Schizotypal (Personality) Disorder
+\item
+  297.1 (F22) Delusional Disorder
+\item
+  298.8 (F23) Brief Psychotic Disorder
+\item
+  295.40 (F20.81) Schizophreniform Disorder
+\item
+  295.90 (F20.9) Schizophrenia
+\item
+  295.70 (F25.0) Schizoaffective Disorder, Bipolar type
+\item
+  295.70 (F25.1) Schizoaffective Disorder, Depressive type
+\item
+  293.81 (F06.2) Psychotic Disorder Due to Another Medical Condition,
+  With delusions
+\item
+  293.82 (F06.0) Psychotic Disorder Due to Another Medical Condition,
+  With hallucinations
+\item
+  293.89 (F06.1) Catatonia Associated With Another Mental Disorder
+  (Catatonia Specifier)
+\item
+  293.89 (F06.1) Catatonic Disorder Due to Another Medical Condition
+\item
+  293.89 (F06.1) Unspecified Catatonia
+\item
+  298.8 (F28) Other Specified Schizophrenia Spectrum and Other Psychotic
+  Disorder
+\item
+  298.9 (F29) Unspecified Schizophrenia Spectrum and Other Psychotic
+  Disorder
+\end{itemize}
+
+\subsection{Bipolar and Related
+Disorders}\label{bipolar-and-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Current or most recent episode
+manic}\label{current-or-most-recent-episode-manic}
+
+\begin{itemize}
+\tightlist
+\item
+  296.41 (F31.11) Bipolar I Disorder, Mild
+\item
+  296.42 (F31.12) Bipolar I Disorder, Moderate
+\item
+  296.43 (F31.13) Bipolar I Disorder, Severe
+\item
+  296.44 (F31.2) Bipolar I Disorder, With psychotic features
+\item
+  296.45 (F31.73) Bipolar I Disorder, In partial remission
+\item
+  296.46 (F31.74) Bipolar I Disorder, In full remission
+\item
+  296.40 (F31.9) Bipolar I Disorder, Unspecified
+\item
+  296.40 (F31.0) Bipolar I Disorder, Current or most recent episode
+  hypomanic
+\item
+  296.45 (F31.71) Bipolar I Disorder, In partial remission
+\item
+  296.46 (F31.72) Bipolar I Disorder, In full remission
+\end{itemize}
+
+\subsubsection{Current or most recent episode
+depressed}\label{current-or-most-recent-episode-depressed}
+
+\begin{itemize}
+\tightlist
+\item
+  296.51 (F31.31) Bipolar I Disorder, Mild
+\item
+  296.52 (F31.32) Bipolar I Disorder, Moderate
+\item
+  296.53 (F31.4) Bipolar I Disorder, Severe
+\item
+  296.54 (F31.5) Bipolar I Disorder, With psychotic features
+\item
+  296.55 (F31.75) Bipolar I Disorder, In partial remission
+\item
+  296.56 (F31.76) Bipolar I Disorder, In full remission
+\item
+  296.50 (F31.9) Bipolar I Disorder, Unspecified
+\item
+  296.7 (F31.9) Bipolar I Disorder, Current or most recent episode
+  unspecified
+\item
+  296.89 (F31.81) Bipolar II Disorder
+\item
+  301.13 (F34.0) Cyclothymic Disorder, Specify if: With anxious distress
+\item
+  XXX.XX (F06.33) Bipolar and Related Disorder Due to Another Medical
+  Condition, With manic features
+\item
+  XXX.XX (F06.33) Bipolar and Related Disorder Due to Another Medical
+  Condition, With manic- or hypomanic-like episode
+\item
+  XXX.XX (F06.34) Bipolar and Related Disorder Due to Another Medical
+  Condition, With mixed features
+\item
+  296.89 (F31.89) Other Specified Bipolar and Related Disorder
+\item
+  296.80 (F31.9) Unspecified Bipolar and Related Disorder
+\end{itemize}
+
+\subsection{Dissociative Disorders}\label{dissociative-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  300.14 (F44.81) Dissociative Identity Disorder
+\item
+  300.12 (F44.0) Dissociative Amnesia
+\item
+  300.13 (F44.1) Dissociative Amnesia, With dissociative fugue
+\item
+  300.6 (F48.1) Depersonalization/Derealization Disorder
+\item
+  300.15 (F44.89) Other Specified Dissociative Disorder
+\item
+  300.15 (F44.9) Unspecified Dissociative Disorder
+\end{itemize}
+
+\subsection{Somatic Symptom and Related
+Disorders}\label{somatic-symptom-and-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  300.82 (F45.1) Somatic Symptom Disorder
+\item
+  300.7 (F45.21) Illness Anxiety Disorder
+\item
+  300.11 (F44.4) Conversion Disorder (Functional Neurological Symptom
+  Disorder), With weakness or paralysis
+\item
+  300.11 (F44.4) Conversion Disorder (Functional Neurological Symptom
+  Disorder), With abnormal movement
+\item
+  300.11 (F44.4) Conversion Disorder (Functional Neurological Symptom
+  Disorder), With swallowing symptoms
+\item
+  300.11 (F44.4) Conversion Disorder (Functional Neurological Symptom
+  Disorder), With speech symptom
+\item
+  300.11 (F44.5) Conversion Disorder (Functional Neurological Symptom
+  Disorder), With attacks or seizures
+\item
+  300.11 (F44.6) Conversion Disorder (Functional Neurological Symptom
+  Disorder), With anesthesia or sensory loss
+\item
+  300.11 (F44.6) Conversion Disorder (Functional Neurological Symptom
+  Disorder), With special sensory symptom
+\item
+  300.11 (F44.7) Conversion Disorder (Functional Neurological Symptom
+  Disorder), With mixed symptoms
+\item
+  316 (F54) Psychological Factors Affecting Other Medical Conditions
+\item
+  300.19 (F68.10) Factitious Disorder, Factitious Disorder Imposed on
+  Self
+\item
+  300.19 (F68.A) Factitious Disorder, Factitious Disorder Imposed on
+  Another
+\item
+  300.89 (F45.8) Other Specified Somatic Symptom and Related Disorder
+\item
+  300.82 (F45.9) Unspecified Somatic Symptom and Related Disorder
+\end{itemize}
+
+\subsection{Feeding and Eating
+Disorders}\label{feeding-and-eating-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  307.52 (F98.3) Pica, In children
+\item
+  307.52 (F50.89) Pica, In adults
+\item
+  307.53 (F98.21) Rumination Disorder
+\item
+  307.59 (F50.82) Avoidant/Restrictive Food Intake Disorder
+\item
+  307.1 (F50.01) Anorexia Nervosa, Restricting type
+\item
+  307.1 (F50.02) Anorexia Nervosa, Binge-eating/purging type
+\item
+  307.1 (F50.2) Bulimia Nervosa
+\item
+  307.51 (F50.81) Binge-Eating Disorder
+\item
+  307.59 (F50.89) Other Specified Feeding or Eating Disorder
+\item
+  307.50 (F50.9) Unspecified Feeding or Eating Disorder
+\end{itemize}
+
+\subsection{Elimination Disorders}\label{elimination-disorders}
+
+\begin{itemize}
+\tightlist
+\item
+  307.6 (F98.0) Enuresis (Nocturnal only, Diurnal only, Nocturnal and
+  diurnal)
+\item
+  307.7 (F98.1) Encopresis
+\item
+  788.39 (N39.498) Other Specified Elimination Disorder, With urinary
+  symptoms
+\item
+  787.60 (R15.9) Other Specified Elimination Disorder, With fecal
+  symptoms
+\item
+  788.30 (R32) Unspecified Elimination Disorder, With urinary symptoms
+\item
+  787.60 (R15.9) Unspecified Elimination Disorder, With fecal symptoms
+\end{itemize}
+
+\subsection{Sleep-Wake Disorders}\label{sleep-wake-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  307.42 (F51.01) Insomnia Disorder
+\item
+  307.44 (F51.11) Hypersomnolence Disorder
+\item
+  347.00 (G47.419) Narcolepsy without cataplexy but with hypocretin
+  deficiency
+\item
+  347.01 (G47.411) Narcolepsy with cataplexy but without hypocretin
+  deficiency
+\item
+  347.00 (G47.419) Autosomal dominant cerebellar ataxia, deafness, and
+  narcolepsy
+\item
+  347.00 (G47.419) Autosomal dominant narcolepsy, obesity, and type 2
+  diabetes
+\item
+  347.10 (G47.429) Narcolepsy secondary to another medical condition
+\item
+  327.23 (G47.33) Obstructive Sleep Apnea/Hypopnea
+\item
+  327.21 (G47.31) Central Sleep Apnea, Idiopathic central sleep apnea
+\item
+  786.04 (R06.3) Central Sleep Apnea, Cheyne-Stokes breathing
+\item
+  780.57 (G47.37) Central sleep apnea comorbid with opioid use
+\end{itemize}
+
+\subsection{Sleep-Related
+Hypoventilation}\label{sleep-related-hypoventilation}
+
+\begin{itemize}
+\tightlist
+\item
+  327.24 (G47.34) Idiopathic hypoventilation
+\item
+  327.25 (G47.35) Congenital central alveolar hypoventilation
+\item
+  327.26 (G47.36) Comorbid sleep-related hypoventilation
+\end{itemize}
+
+\subsection{Circadian Rhythm Sleep-Wake
+Disorders}\label{circadian-rhythm-sleep-wake-disorders}
+
+\begin{itemize}
+\tightlist
+\item
+  307.45 (G47.21) Circadian Rhythm Sleep-Wake Disorders, Delayed sleep
+  phase type, Specify if: Familial, Overlapping with non-24-hour
+  sleep-wake type
+\item
+  307.45 (G47.22) Circadian Rhythm Sleep-Wake Disorders, Advanced sleep
+  phase type, Specify if: Familial
+\item
+  307.45 (G47.23) Circadian Rhythm Sleep-Wake Disorders, Irregular
+  sleep-wake type
+\item
+  307.45 (G47.24) Circadian Rhythm Sleep-Wake Disorders, Non-24-hour
+  sleep-wake type
+\item
+  307.45 (G47.26) Circadian Rhythm Sleep-Wake Disorders, Shift work type
+\item
+  307.45 (G47.20) Circadian Rhythm Sleep-Wake Disorders, Unspecified
+  type
+\end{itemize}
+
+\subsection{Parasomnias}\label{parasomnias}
+
+\begin{itemize}
+\tightlist
+\item
+  307.46 (F51.3) Non--Rapid Eye Movement Sleep Arousal Disorders,
+  Sleepwalking type
+\item
+  307.46 (F51.3) Non--Rapid Eye Movement Sleep Arousal Disorders, With
+  sleep-related eating, With sleep-related sexual behavior (sexsomnia)
+\item
+  307.46 (F51.4) Non--Rapid Eye Movement Sleep Arousal Disorders, Sleep
+  terror type
+\item
+  307.47 (F51.5) Nightmare Disorder, Specify if: During sleep onset,
+  Specify if: With associated non--sleep disorder, With associated other
+  medical condition, With associated other sleep disorder
+\item
+  327.42 (G47.52) Rapid Eye Movement Sleep Behavior Disorder
+\item
+  333.94 (G25.81) Restless Legs Syndrome
+\item
+  780.52 (G47.09) Other Specified Insomnia Disorder
+\item
+  780.52 (G47.00) Unspecified Insomnia Disorder
+\item
+  780.54 (G47.19) Other Specified Hypersomnolence Disorder
+\item
+  780.54 (G47.10) Unspecified Hypersomnolence Disorder
+\item
+  780.59 (G47.8) Other Specified Sleep-Wake Disorder
+\item
+  780.59 (G47.9) Unspecified Sleep-Wake Disorder
+\end{itemize}
+
+\subsection{Sexual Dysfunctions}\label{sexual-dysfunctions}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  302.74 (F52.32) Sexual Dysfunction, Delayed Ejaculation
+\item
+  302.72 (F52.21) Sexual Dysfunction, Erectile Disorder
+\item
+  302.73 (F52.31) Sexual Dysfunction, Female Orgasmic Disorder
+\item
+  302.72 (F52.22) Female Sexual Interest/Arousal Disorder
+\item
+  302.76 (F52.6) Genito-Pelvic Pain/Penetration Disorder
+\item
+  302.71 (F52.0) Male Hypoactive Sexual Desire Disorder
+\item
+  302.75 (F52.4) Premature (Early) Ejaculation
+\item
+  302.79 (F52.8) Other Specified Sexual Dysfunction
+\item
+  302.70 (F52.9) Unspecified Sexual Dysfunction
+\end{itemize}
+
+\subsection{Gender Dysphoria}\label{gender-dysphoria}
+
+\begin{itemize}
+\tightlist
+\item
+  302.6 (F64.2) Gender Dysphoria in Children, Specify if: With a
+  disorder of sex development
+\item
+  302.85 (F64.0) Gender Dysphoria in Adolescents and Adults
+\item
+  302.6 (F64.8) Other Specified Gender Dysphoria
+\item
+  302.6 (F64.9) Unspecified Gender Dysphoria
+\end{itemize}
+
+\subsection{Substance-Related and Addictive
+Disorders}\label{substance-related-and-addictive-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Alcohol-Related
+Disorders}\label{alcohol-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{Alcohol Use Disorder}\label{alcohol-use-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  305.00 (F10.10) Alcohol Use Disorder, Mild
+\item
+  305.00 (F10.11) Alcohol Use Disorder, Mild, In early remission
+\item
+  305.00 (F10.11) Alcohol Use Disorder, Mild, In sustained remission
+\item
+  303.90 (F10.20) Alcohol Use Disorder, Moderate
+\item
+  303.90 (F10.21) Alcohol Use Disorder, Moderate, In early remission
+\item
+  303.90 (F10.21) Alcohol Use Disorder, Moderate, In sustained remission
+\item
+  303.90 (F10.20) Alcohol Use Disorder, Severe
+\item
+  303.90 (F10.21) Alcohol Use Disorder, Severe, In early remission
+\item
+  303.90 (F10.21) Alcohol Use Disorder, Severe, In sustained remission
+\end{itemize}
+
+\paragraph{Alcohol Intoxication}\label{alcohol-intoxication}
+
+\begin{itemize}
+\tightlist
+\item
+  303.00 (F10.129) Alcohol Intoxication, With use disorder, mild
+\item
+  303.00 (F10.229) Alcohol Intoxication, With use disorder, moderate or
+  severe
+\item
+  303.00 (F10.929) Alcohol Intoxication, Without use disorder
+\end{itemize}
+
+\paragraph{Alcohol Withdrawal}\label{alcohol-withdrawal}
+
+\begin{itemize}
+\tightlist
+\item
+  291.81 (F10.239) Alcohol Withdrawal, Without perceptual disturbances
+\item
+  291.81 (F10.232) Alcohol Withdrawal, With perceptual disturbances
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Alcohol-Induced Disorders
+\item
+  291.9 (F10.99) Unspecified Alcohol-Related Disorder
+\end{itemize}
+
+\subsubsection{Caffeine-Related
+Disorders}\label{caffeine-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  305.90 (F15.929) Caffeine Intoxication
+\item
+  292.0 (F15.93) Caffeine Withdrawal
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Caffeine-Induced Disorders
+\item
+  292.9 (F15.99) Unspecified Caffeine-Related Disorder
+\end{itemize}
+
+\subsubsection{Cannabis-Related
+Disorders}\label{cannabis-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{Cannabis Use Disorder}\label{cannabis-use-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  305.20 (F12.10) Cannabis Use Disorder, Mild
+\item
+  305.20 (F12.11) Cannabis Use Disorder, Mild, In early remission
+\item
+  305.20 (F12.11) Cannabis Use Disorder, Mild, In sustained remission
+\item
+  304.30 (F12.20) Cannabis Use Disorder, Moderate
+\item
+  304.30 (F12.21) Cannabis Use Disorder, Moderate, In early remission
+\item
+  304.30 (F12.21) Cannabis Use Disorder, Moderate, In sustained
+  remission
+\item
+  304.30 (F12.20) Cannabis Use Disorder, Severe
+\item
+  304.30 (F12.21) Cannabis Use Disorder, Severe, In early remission
+\item
+  304.30 (F12.21) Cannabis Use Disorder, Severe, In sustained remission
+\end{itemize}
+
+\paragraph{Cannabis Intoxication, Without perceptual
+disturbances}\label{cannabis-intoxication-without-perceptual-disturbances}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F12.129) Cannabis Intoxication, Without perceptual
+  disturbances, With use disorder, mild
+\item
+  292.89 (F12.229) Cannabis Intoxication, Without perceptual
+  disturbances, With use disorder, moderate or severe
+\item
+  292.89 (F12.929) Cannabis Intoxication, Without perceptual
+  disturbances, Without use disorder
+\end{itemize}
+
+\paragraph{Cannabis Intoxication, With perceptual
+disturbances}\label{cannabis-intoxication-with-perceptual-disturbances}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F12.122) Cannabis Intoxication, With perceptual disturbances,
+  With use disorder, mild
+\item
+  292.89 (F12.222) Cannabis Intoxication, With perceptual disturbances,
+  With use disorder, moderate or severe
+\item
+  292.89 (F12.922) Cannabis Intoxication, With perceptual disturbances,
+  Without use disorder
+\end{itemize}
+
+\paragraph{Cannabis Withdrawal}\label{cannabis-withdrawal}
+
+\begin{itemize}
+\tightlist
+\item
+  292.0 (F12.23) Cannabis Withdrawal, With use disorder, moderate or
+  severe
+\item
+  292.0 (F12.93) Cannabis Withdrawal, Without use disorder
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Cannabis-Induced Disorders
+\item
+  292.9 (F12.99) Unspecified Cannabis-Related Disorder
+\end{itemize}
+
+\subsubsection{Hallucinogen-Related
+Disorders}\label{hallucinogen-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  305.90 (F16.10) Phencyclidine Use Disorder, Mild
+\item
+  305.90 (F16.11) Phencyclidine Use Disorder, Mild, In early remission
+\item
+  305.90 (F16.11) Phencyclidine Use Disorder, Mild, In sustained
+  remission
+\item
+  304.60 (F16.20) Phencyclidine Use Disorder, Moderate
+\item
+  305.90 (F16.21) Phencyclidine Use Disorder, Moderate, In early
+  remission
+\item
+  305.90 (F16.21) Phencyclidine Use Disorder, Moderate, In sustained
+  remission
+\item
+  304.60 (F16.20) Phencyclidine Use Disorder, Severe
+\item
+  305.90 (F16.21) Phencyclidine Use Disorder, Severe, In early remission
+\item
+  305.90 (F16.21) Phencyclidine Use Disorder, Severe, In sustained
+  remission
+\item
+  305.30 (F16.10) Other Hallucinogen Use Disorder, Mild
+\item
+  305.30 (F16.11) Other Hallucinogen Use Disorder, Mild, In early
+  remission
+\item
+  305.30 (F16.11) Other Hallucinogen Use Disorder, Mild, In sustained
+  remission
+\item
+  304.50 (F16.20) Other Hallucinogen Use Disorder, Moderate
+\item
+  305.30 (F16.21) Other Hallucinogen Use Disorder, Moderate, In early
+  remission
+\item
+  305.30 (F16.21) Other Hallucinogen Use Disorder, Moderate, In
+  sustained remission
+\item
+  304.50 (F16.20) Other Hallucinogen Use Disorder, Severe
+\item
+  305.30 (F16.21) Other Hallucinogen Use Disorder, Severe, In early
+  remission
+\item
+  305.30 (F16.21) Other Hallucinogen Use Disorder, Severe, In sustained
+  remission
+\item
+  292.89 (F16.129) Phencyclidine Intoxication, With use disorder, mild
+\item
+  292.89 (F16.229) Phencyclidine Intoxication, With use disorder,
+  moderate or severe
+\item
+  292.89 (F16.929) Phencyclidine Intoxication, Without use disorder
+\item
+  292.89 (F16.129) Other Hallucinogen Intoxication, With use disorder,
+  mild
+\item
+  292.89 (F16.229) Other Hallucinogen Intoxication, With use disorder,
+  moderate or severe
+\item
+  292.89 (F16.929) Other Hallucinogen Intoxication, Without use disorder
+\item
+  292.89 (F16.983) Hallucinogen Persisting Perception Disorder
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Phencyclidine-Induced Disorders
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Hallucinogen-Induced Disorders
+\item
+  292.9 (F16.99) Unspecified Phencyclidine-Related Disorder
+\item
+  292.9 (F16.99) Unspecified Hallucinogen-Related Disorder
+\end{itemize}
+
+\subsubsection{Inhalant-Related
+Disorders}\label{inhalant-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Inhalant Use Disorder}\label{inhalant-use-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  305.90 (F18.10) Inhalant Use Disorder, Mild
+\item
+  305.90 (F18.11) Inhalant Use Disorder, Mild, In early remission
+\item
+  305.90 (F18.11) Inhalant Use Disorder, Mild, In sustained remission
+\item
+  304.60 (F18.20) Inhalant Use Disorder, Moderate
+\item
+  304.60 (F18.21) Inhalant Use Disorder, Moderate, In early remission
+\item
+  304.60 (F18.21) Inhalant Use Disorder, Moderate, In sustained
+  remission
+\item
+  304.60 (F18.20) Inhalant Use Disorder, Severe
+\item
+  304.60 (F18.21) Inhalant Use Disorder, Severe, In early remission
+\item
+  304.60 (F18.21) Inhalant Use Disorder, Severe, In sustained remission
+\end{itemize}
+
+\subsubsection{Inhalant Intoxication}\label{inhalant-intoxication}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F18.129) Inhalant Intoxication, With use disorder, mild
+\item
+  292.89 (F18.229) Inhalant Intoxication, With use disorder, moderate or
+  severe
+\item
+  292.89 (F18.929) Inhalant Intoxication, Without use disorder
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Inhalant-Induced Disorders
+\item
+  292.9 (F18.99) Unspecified Inhalant-Related Disorder
+\end{itemize}
+
+\subsubsection{Opioid-Related Disorders}\label{opioid-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{Opioid Use Disorder}\label{opioid-use-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  305.50 (F11.10) Opioid Use Disorder, Mild
+\item
+  305.50 (F11.11) Opioid Use Disorder, Mild, In early remission
+\item
+  305.50 (F11.11) Opioid Use Disorder, Mild, In sustained remission
+\item
+  304.00 (F11.20) Opioid Use Disorder, Moderate
+\item
+  304.00 (F11.21) Opioid Use Disorder, Moderate, In early remission
+\item
+  304.00 (F11.21) Opioid Use Disorder, Moderate, In sustained remission
+\item
+  304.00 (F11.20) Opioid Use Disorder, Severe
+\item
+  304.00 (F11.21) Opioid Use Disorder, Severe, In early remission
+\item
+  304.00 (F11.21) Opioid Use Disorder, Severe, In sustained remission
+\end{itemize}
+
+\paragraph{Opioid Intoxication}\label{opioid-intoxication}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F11.129) Opioid Intoxication, Without perceptual disturbances,
+  With use disorder, mild
+\item
+  292.89 (F11.229) Opioid Intoxication, Without perceptual disturbances,
+  With use disorder, moderate or severe
+\item
+  292.89 (F11.929) Opioid Intoxication, Without perceptual disturbances,
+  Without use disorder
+\item
+  292.89 (F11.122) Opioid Intoxication, With perceptual disturbances,
+  With use disorder, mild
+\item
+  292.89 (F11.222) Opioid Intoxication, With perceptual disturbances,
+  With use disorder, moderate or severe
+\item
+  292.89 (F11.922) Opioid Intoxication, With perceptual disturbances,
+  Without use disorder
+\end{itemize}
+
+\paragraph{Opioid Withdrawal}\label{opioid-withdrawal}
+
+\begin{itemize}
+\tightlist
+\item
+  292.0 (F11.23) Opioid Withdrawal, With use disorder, moderate or
+  severe
+\item
+  292.0 (F11.93) Opioid Withdrawal, Without use disorder
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Opioid-Induced Disorders
+\item
+  292.9 (F11.99) Unspecified Opioid-Related Disorder
+\end{itemize}
+
+\subsubsection{Sedative-, Hypnotic-, or Anxiolytic-Related
+Disorders}\label{sedative--hypnotic--or-anxiolytic-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{Sedative, Hypnotic, or Anxiolytic Use
+Disorder}\label{sedative-hypnotic-or-anxiolytic-use-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  305.40 (F13.10) Sedative, Hypnotic, or Anxiolytic Use Disorder, Mild
+\item
+  305.40 (F13.11) Sedative, Hypnotic, or Anxiolytic Use Disorder, Mild,
+  In early remission
+\item
+  305.40 (F13.11) Sedative, Hypnotic, or Anxiolytic Use Disorder, Mild,
+  In sustained remission
+\item
+  304.10 (F13.20) Sedative, Hypnotic, or Anxiolytic Use Disorder,
+  Moderate
+\item
+  304.10 (F13.21) Sedative, Hypnotic, or Anxiolytic Use Disorder,
+  Moderate, In early remission
+\item
+  304.10 (F13.21) Sedative, Hypnotic, or Anxiolytic Use Disorder,
+  Moderate, In sustained remission
+\item
+  304.10 (F13.20) Sedative, Hypnotic, or Anxiolytic Use Disorder, Severe
+\item
+  304.10 (F13.21) Sedative, Hypnotic, or Anxiolytic Use Disorder,
+  Severe, In early remission
+\item
+  304.10 (F13.21) Sedative, Hypnotic, or Anxiolytic Use Disorder,
+  Severe, In sustained remission
+\end{itemize}
+
+\paragraph{Sedative, Hypnotic, or Anxiolytic
+Intoxication}\label{sedative-hypnotic-or-anxiolytic-intoxication}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F13.129) Sedative, Hypnotic, or Anxiolytic Intoxication, With
+  use disorder, mild
+\item
+  292.89 (F13.229) Sedative, Hypnotic, or Anxiolytic Intoxication, With
+  use disorder, moderate or severe
+\item
+  292.89 (F13.929) Sedative, Hypnotic, or Anxiolytic Intoxication,
+  Without use disorder
+\end{itemize}
+
+\paragraph{Sedative, Hypnotic, or Anxiolytic
+Withdrawal}\label{sedative-hypnotic-or-anxiolytic-withdrawal}
+
+\subparagraph{Without perceptual
+disturbances}\label{without-perceptual-disturbances}
+
+\begin{itemize}
+\tightlist
+\item
+  292.0 (F13.239) Sedative, Hypnotic, or Anxiolytic Withdrawal, With use
+  disorder, moderate or severe
+\item
+  292.0 (F13.939) Sedative, Hypnotic, or Anxiolytic Withdrawal, Without
+  use disorder
+\end{itemize}
+
+\subparagraph{With perceptual
+disturbances}\label{with-perceptual-disturbances}
+
+\begin{itemize}
+\tightlist
+\item
+  292.0 (F13.232) Sedative, Hypnotic, or Anxiolytic Withdrawal, With use
+  disorder, moderate or severe
+\item
+  292.0 (F13.932) Sedative, Hypnotic, or Anxiolytic Withdrawal, Without
+  use disorder
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Sedative-, Hypnotic-, or
+  Anxiolytic-Induced Disorders
+\item
+  292.9 (F13.99) Unspecified Sedative-, Hypnotic-, or Anxiolytic-Related
+  Disorder
+\end{itemize}
+
+\subsubsection{Stimulant-Related
+Disorders}\label{stimulant-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{Stimulant Use Disorder}\label{stimulant-use-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  305.70 (F15.10) Stimulant Use Disorder, Mild, Amphetamine-type
+  substance
+\item
+  305.60 (F14.10) Stimulant Use Disorder, Mild, Cocaine
+\item
+  305.70 (F15.10) Stimulant Use Disorder, Mild, Other or unspecified
+  stimulant
+\item
+  305.70 (F15.11) Stimulant Use Disorder, Mild, In early remission,
+  Amphetamine-type substance
+\item
+  305.60 (F14.11) Stimulant Use Disorder, Mild, In early remission,
+  Cocaine
+\item
+  305.70 (F15.11) Stimulant Use Disorder, Mild, In early remission,
+  Other or unspecified stimulant
+\item
+  305.70 (F15.11) Stimulant Use Disorder, Mild, In sustained remission,
+  Amphetamine-type substance
+\item
+  305.60 (F14.11) Stimulant Use Disorder, Mild, In sustained remission,
+  Cocaine
+\item
+  305.70 (F15.11) Stimulant Use Disorder, Mild, In sustained remission,
+  Other or unspecified stimulant
+\item
+  304.40 (F15.20) Stimulant Use Disorder, Moderate, Amphetamine-type
+  substance
+\item
+  304.20 (F14.20) Stimulant Use Disorder, Moderate, Cocaine
+\item
+  304.40 (F15.20) Stimulant Use Disorder, Moderate, Other or unspecified
+  stimulant
+\item
+  304.40 (F15.21) Stimulant Use Disorder, Moderate, In early remission,
+  Amphetamine-type substance
+\item
+  304.20 (F14.21) Stimulant Use Disorder, Moderate, In early remission,
+  Cocaine
+\item
+  304.40 (F15.21) Stimulant Use Disorder, Moderate, In early remission,
+  Other or unspecified stimulant
+\item
+  304.40 (F15.21) Stimulant Use Disorder, Moderate, In sustained
+  remission, Amphetamine-type substance
+\item
+  304.20 (F14.21) Stimulant Use Disorder, Moderate, In sustained
+  remission, Cocaine
+\item
+  304.40 (F15.21) Stimulant Use Disorder, Moderate, In sustained
+  remission, Other or unspecified stimulant
+\item
+  304.40 (F15.20) Stimulant Use Disorder, Severe, Amphetamine-type
+  substance
+\item
+  304.20 (F14.20) Stimulant Use Disorder, Severe, Cocaine
+\item
+  304.40 (F15.20) Stimulant Use Disorder, Severe, Other or unspecified
+  stimulant
+\item
+  304.40 (F15.21) Stimulant Use Disorder, Severe, In early remission,
+  Amphetamine-type substance
+\item
+  304.20 (F14.21) Stimulant Use Disorder, Severe, In early remission,
+  Cocaine
+\item
+  304.40 (F15.21) Stimulant Use Disorder, Severe, In early remission,
+  Other or unspecified stimulant
+\item
+  304.40 (F15.21) Stimulant Use Disorder, Severe, In sustained
+  remission, Amphetamine-type substance
+\item
+  304.20 (F14.21) Stimulant Use Disorder, Severe, In sustained
+  remission, Cocaine
+\item
+  304.40 (F15.21) Stimulant Use Disorder, Severe, In sustained
+  remission, Other or unspecified stimulant
+\end{itemize}
+
+\paragraph{Stimulant Intoxication}\label{stimulant-intoxication}
+
+\subparagraph{Amphetamine or other stimulant, Without perceptual
+disturbances}\label{amphetamine-or-other-stimulant-without-perceptual-disturbances}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F15.129) Stimulant Intoxication, Amphetamine or other
+  stimulant, Without perceptual disturbances, With use disorder, mild
+\item
+  292.89 (F15.229) Stimulant Intoxication, Amphetamine or other
+  stimulant, Without perceptual disturbances, With use disorder,
+  moderate or severe
+\item
+  292.89 (F15.929) Stimulant Intoxication, Amphetamine or other
+  stimulant, Without perceptual disturbances, Without use disorder
+\end{itemize}
+
+\subparagraph{Cocaine, Without perceptual
+disturbances}\label{cocaine-without-perceptual-disturbances}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F14.129) Stimulant Intoxication, Cocaine, Without perceptual
+  disturbances, With use disorder, mild
+\item
+  292.89 (F14.229) Stimulant Intoxication, Cocaine, Without perceptual
+  disturbances, With use disorder, moderate or severe
+\item
+  292.89 (F14.929) Stimulant Intoxication, Cocaine, Without perceptual
+  disturbances, Without use disorder
+\end{itemize}
+
+\subparagraph{Amphetamine or other stimulant, With perceptual
+disturbances}\label{amphetamine-or-other-stimulant-with-perceptual-disturbances}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F15.122) Stimulant Intoxication, Amphetamine or other
+  stimulant, With perceptual disturbances, With use disorder, mild
+\item
+  292.89 (F15.222) Stimulant Intoxication, Amphetamine or other
+  stimulant, With perceptual disturbances, With use disorder, moderate
+  or severe
+\item
+  292.89 (F15.922) Stimulant Intoxication, Amphetamine or other
+  stimulant, With perceptual disturbances, Without use disorder
+\end{itemize}
+
+\subparagraph{Cocaine, With perceptual
+disturbances}\label{cocaine-with-perceptual-disturbances}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F14.122) Stimulant Intoxication, Cocaine, With perceptual
+  disturbances, With use disorder, mild
+\item
+  292.89 (F14.222) Stimulant Intoxication, Cocaine, With perceptual
+  disturbances, With use disorder, moderate or severe
+\item
+  292.89 (F14.922) Stimulant Intoxication, Cocaine, With perceptual
+  disturbances, Without use disorder
+\end{itemize}
+
+\paragraph{Stimulant Withdrawal}\label{stimulant-withdrawal}
+
+\begin{itemize}
+\tightlist
+\item
+  292.0 (F15.23) Stimulant Withdrawal, Amphetamine or other stimulant,
+  With use disorder, moderate or severe
+\item
+  292.0 (F15.93) Stimulant Withdrawal, Amphetamine or other stimulant,
+  Without use disorder
+\item
+  292.0 (F14.23) Stimulant Withdrawal, Cocaine
+\item
+  \textbf{\_.} (\textbf{\_.}) Other Stimulant-Induced Disorders
+\item
+  292.9 (\textbf{\_.}) Unspecified Stimulant-Related Disorder
+\item
+  292.9 (F15.99) Amphetamine or other stimulant
+\item
+  292.9 (F14.99) Cocaine
+\end{itemize}
+
+\subsection{Tobacco-Related Disorders}\label{tobacco-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Tobacco Use Disorder}\label{tobacco-use-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  305.1 (Z72.0) Tobacco Use Disorder, Mild
+\item
+  305.1 (F17.200) Tobacco Use Disorder, Moderate
+\item
+  305.1 (F17.201) Tobacco Use Disorder, Moderate, In early remission
+\item
+  305.1 (F17.201) Tobacco Use Disorder, Moderate, In sustained remission
+\item
+  305.1 (F17.200) Tobacco Use Disorder, Severe
+\item
+  305.1 (F17.201) Tobacco Use Disorder, Severe, In early remission
+\item
+  305.1 (F17.201) Tobacco Use Disorder, Severe, In sustained remission
+\item
+  292.0 (F17.203) Tobacco Use Disorder, Tobacco Withdrawal
+\item
+  \textbf{\_.} (\textbf{\_.}) Tobacco Use Disorder, Other
+  Tobacco-Induced Disorders
+\item
+  292.9 (F17.209) Tobacco Use Disorder, Unspecified Tobacco-Related
+  Disorder
+\end{itemize}
+
+\subsection{Other (or Unknown) Substance--Related
+Disorders}\label{other-or-unknown-substancerelated-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Other (or Unknown) Substance Use
+Disorder}\label{other-or-unknown-substance-use-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  305.90 (F19.10) Other (or Unknown) Substance Use Disorder, Mild
+\item
+  305.90 (F19.11) Other (or Unknown) Substance Use Disorder, Mild, In
+  early remission
+\item
+  305.90 (F19.11) Other (or Unknown) Substance Use Disorder, Mild, In
+  sustained remission
+\item
+  304.90 (F19.20) Other (or Unknown) Substance Use Disorder, Moderate
+\item
+  305.90 (F19.21) Other (or Unknown) Substance Use Disorder, Moderate,
+  In early remission
+\item
+  305.90 (F19.21) Other (or Unknown) Substance Use Disorder, Moderate,
+  In sustained remission
+\item
+  304.90 (F19.20) Other (or Unknown) Substance Use Disorder, Severe
+\item
+  305.90 (F19.21) Other (or Unknown) Substance Use Disorder, Severe, In
+  early remission
+\item
+  305.90 (F19.21) Other (or Unknown) Substance Use Disorder, Severe, In
+  sustained remission
+\end{itemize}
+
+\subsubsection{Other (or Unknown) Substance
+Intoxication}\label{other-or-unknown-substance-intoxication}
+
+\begin{itemize}
+\tightlist
+\item
+  292.89 (F19.129) Other (or Unknown) Substance Intoxication, With use
+  disorder, mild
+\item
+  292.89 (F19.229) Other (or Unknown) Substance Intoxication, With use
+  disorder, moderate or severe
+\item
+  292.89 (F19.929) Other (or Unknown) Substance Intoxication, Without
+  use disorder
+\end{itemize}
+
+\subsubsection{Other (or Unknown) Substance
+Withdrawal}\label{other-or-unknown-substance-withdrawal}
+
+\begin{itemize}
+\tightlist
+\item
+  292.0 (F19.239) Other (or Unknown) Substance Withdrawal, With use
+  disorder, moderate or severe
+\item
+  292.0 (F19.939) Other (or Unknown) Substance Withdrawal, Without use
+  disorder
+\item
+  \_\textbf{.} (\_**.\_\_) Other (or Unknown) Substance--Induced
+  Disorders
+\item
+  292.9 (F19.99) Unspecified Other (or Unknown) Substance--Related
+  Disorder
+\end{itemize}
+
+\subsubsection{Non-Substance-Related
+Disorders}\label{non-substance-related-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  312.31 (F63.0) Gambling Disorder, Specify if: Episodic, Persistent,
+  Specify current severity: Mild, Moderate, Severe
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Delirium}\label{delirium}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\_.} (\textbf{\_.}) Substance intoxication delirium
+\item
+  \textbf{\_.} (\textbf{\_.}) Substance withdrawal delirium
+\item
+  292.81 (\textbf{\_.}) Medication-induced delirium
+\item
+  293.0 (F05) Delirium due to another medical condition
+\item
+  293.0 (F05) Delirium due to multiple etiologies
+\item
+  780.09 (R41.0) Other Specified Delirium
+\item
+  780.09 (R41.0) Unspecified Delirium
+\end{itemize}
+
+\subsection{Major and Mild Neurocognitive
+Disorders}\label{major-and-mild-neurocognitive-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Major or Mild Neurocognitive Disorder Due to Alzheimer's
+Disease}\label{major-or-mild-neurocognitive-disorder-due-to-alzheimers-disease}
+
+\emph{Note: Code first 331.0 (G30.9) Alzheimer's disease.}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Probable
+  Alzheimer's Disease, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to Probable
+  Alzheimer's Disease, Without behavioral disturbance
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Possible
+  Alzheimer's Disease, With behavioral disturbance
+\item
+  294.10 (F02.80)Major Neurocognitive Disorder Due to Possible
+  Alzheimer's Disease, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to Alzheimer's
+  Disease
+\end{itemize}
+
+\subsubsection{Major or Mild Frontotemporal Neurocognitive
+Disorder}\label{major-or-mild-frontotemporal-neurocognitive-disorder}
+
+\emph{Note: Code first 331.19 (G31.09) frontotemporal disease.}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Probable
+  Frontotemporal Lobar Degeneration, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to Probable
+  Frontotemporal Lobar Degeneration, Without behavioral disturbance
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Possible
+  Frontotemporal Lobar Degeneration, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to Possible
+  Frontotemporal Lobar Degeneration, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to Frontotemporal
+  Lobar Degeneration
+\end{itemize}
+
+\subsubsection{Major or Mild Neurocognitive Disorder With Lewy
+Bodies}\label{major-or-mild-neurocognitive-disorder-with-lewy-bodies}
+
+\emph{Note: Code first 331.82 (G31.83) Lewy body disease.}
+
+\paragraph{Major Neurocognitive Disorder With Probable Lewy
+Bodies}\label{major-neurocognitive-disorder-with-probable-lewy-bodies}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder With Probable Lewy
+  Bodies, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder With Probable Lewy
+  Bodies, Without behavioral disturbance
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder With Possible Lewy
+  Bodies, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder With Possible Lewy
+  Bodies, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder With Lewy Bodies
+\end{itemize}
+
+\subsubsection{Major or Mild Vascular Neurocognitive
+Disorder}\label{major-or-mild-vascular-neurocognitive-disorder}
+
+\begin{itemize}
+\tightlist
+\item
+  290.40 (F01.51) Major Neurocognitive Disorder Probably Due to Vascular
+  Disease, With behavioral disturbance
+\item
+  290.40 (F01.50) Major Neurocognitive Disorder Probably Due to Vascular
+  Disease, Without behavioral disturbance
+\item
+  290.40 (F01.51) Major Neurocognitive Disorder Possibly Due to Vascular
+  Disease, With behavioral disturbance
+\item
+  290.40 (F01.50) Major Neurocognitive Disorder Possibly Due to Vascular
+  Disease, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Vascular Neurocognitive Disorder
+\end{itemize}
+
+\subsubsection{Major or Mild Neurocognitive Disorder Due to Traumatic
+Brain
+Injury}\label{major-or-mild-neurocognitive-disorder-due-to-traumatic-brain-injury}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Traumatic Brain
+  Injury, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to Traumatic Brain
+  Injury, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to Traumatic Brain
+  Injury
+\end{itemize}
+
+\subsubsection{Substance/Medication-Induced Major or Mild Neurocognitive
+Disorder}\label{substancemedication-induced-major-or-mild-neurocognitive-disorder}
+
+\emph{Note: No additional medical code. See the criteria set and
+corresponding recording procedures for substance-specific codes and
+ICD-9-CM and ICD-10-CM coding.} \emph{Specify if: Persistent}
+
+\subsubsection{Major or Mild Neurocognitive Disorder Due to HIV
+Infection}\label{major-or-mild-neurocognitive-disorder-due-to-hiv-infection}
+
+\emph{Note: Code first 042 (B20) HIV infection.}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to HIV Infection,
+  With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to HIV Infection,
+  Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to HIV Infection
+\end{itemize}
+
+\subsubsection{Major or Mild Neurocognitive Disorder Due to Prion
+Disease}\label{major-or-mild-neurocognitive-disorder-due-to-prion-disease}
+
+\emph{Note: Code first 046.79 (A81.9) prion disease.}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Prion Disease,
+  With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to Prion Disease,
+  Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to Prion Disease
+\end{itemize}
+
+\subsubsection{Major or Mild Neurocognitive Disorder Due to Parkinson's
+Disease}\label{major-or-mild-neurocognitive-disorder-due-to-parkinsons-disease}
+
+\emph{Note: Code first 332.0 (G20) Parkinson's disease.}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Probably Due to
+  Parkinson's Disease, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Probably Due to
+  Parkinson's Disease, Without behavioral disturbance
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Possibly Due to
+  Parkinson's Disease, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Possibly Due to
+  Parkinson's Disease, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to Parkinson's
+  Disease
+\end{itemize}
+
+\subsubsection{Major or Mild Neurocognitive Disorder Due to Huntington's
+Disease}\label{major-or-mild-neurocognitive-disorder-due-to-huntingtons-disease}
+
+\emph{Note: Code first 333.4 (G10) Huntington's disease.}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Huntington's
+  Disease, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to Huntington's
+  Disease, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to Huntington's
+  Disease
+\end{itemize}
+
+\subsection{Major or Mild Neurocognitive Disorder Due to Another Medical
+Condition}\label{major-or-mild-neurocognitive-disorder-due-to-another-medical-condition}
+
+\emph{Note: Code first the other medical condition.}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Another Medical
+  Condition, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to Another Medical
+  Condition, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to Another Medical
+  Condition
+\end{itemize}
+
+\subsection{Major or Mild Neurocognitive Disorder Due to Multiple
+Etiologies}\label{major-or-mild-neurocognitive-disorder-due-to-multiple-etiologies}
+
+\emph{Note: Code first all the etiological medical conditions (with the
+exception of vascular disease).}
+
+\begin{itemize}
+\tightlist
+\item
+  294.11 (F02.81) Major Neurocognitive Disorder Due to Multiple
+  Etiologies, With behavioral disturbance
+\item
+  294.10 (F02.80) Major Neurocognitive Disorder Due to Multiple
+  Etiologies, Without behavioral disturbance
+\item
+  331.83 (G31.84) Mild Neurocognitive Disorder Due to Multiple
+  Etiologies
+\end{itemize}
+
+\subsection{Personality Disorders}\label{personality-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Cluster A Personality
+Disorders}\label{cluster-a-personality-disorders}
+
+\begin{itemize}
+\tightlist
+\item
+  301.0 (F60.0) Paranoid Personality Disorder
+\item
+  301.20 (F60.1) Schizoid Personality Disorder
+\item
+  301.22 (F21) Schizotypal Personality Disorder
+\end{itemize}
+
+\subsubsection{Cluster B Personality
+Disorders}\label{cluster-b-personality-disorders}
+
+\begin{itemize}
+\tightlist
+\item
+  301.7 (F60.2) Antisocial Personality Disorder
+\item
+  301.83 (F60.3) Borderline Personality Disorder
+\item
+  301.50 (F60.4) Histrionic Personality Disorder
+\item
+  301.81 (F60.81) Narcissistic Personality Disorder
+\end{itemize}
+
+\subsubsection{Cluster C Personality
+Disorders}\label{cluster-c-personality-disorders}
+
+\begin{itemize}
+\tightlist
+\item
+  301.82 (F60.6) Avoidant Personality Disorder
+\item
+  301.6 (F60.7) Dependent Personality Disorder
+\item
+  301.4 (F60.5) Obsessive-Compulsive Personality Disorder
+\end{itemize}
+
+\subsubsection{Other Personality
+Disorders}\label{other-personality-disorders}
+
+\begin{itemize}
+\tightlist
+\item
+  310.1 (F07.0) Personality Change Due to Another Medical Condition
+  (Labile type, Disinhibited type, Aggressive type, Apathetic type,
+  Paranoid type, Other type, Combined type, Unspecified type)
+\item
+  301.89 (F60.89) Other Specified Personality Disorder
+\item
+  301.9 (F60.9) Unspecified Personality Disorder
+\end{itemize}
+
+\subsection{Paraphilic Disorders}\label{paraphilic-disorders}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  302.82 (F65.3) Voyeuristic Disorder
+\item
+  302.4 (F65.2) Exhibitionistic Disorder
+\item
+  302.89 (F65.81) Frotteuristic Disorder
+\item
+  302.83 (F65.51) Sexual Masochism Disorder, Specify if: With
+  asphyxiophilia
+\item
+  302.84 (F65.52) Sexual Sadism Disorder
+\item
+  302.2 (F65.4) Pedophilic Disorder
+\item
+  302.81 (F65.0) Fetishistic Disorder
+\item
+  302.3 (F65.1) Transvestic Disorder
+\item
+  302.89 (F65.89) Other Specified Paraphilic Disorder
+\item
+  302.9 (F65.9) Unspecified Paraphilic Disorder
+\end{itemize}
+
+\subsection{Medication-Induced Movement Disorders and Other Adverse
+Effects of
+Medication}\label{medication-induced-movement-disorders-and-other-adverse-effects-of-medication}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  332.1 (G21.11) Neuroleptic-Induced Parkinsonism
+\item
+  332.1 (G21.19) Other Medication-Induced Parkinsonism
+\item
+  333.92 (G21.0) Neuroleptic Malignant Syndrome
+\item
+  333.72 (G24.02) Medication-Induced Acute Dystonia
+\item
+  333.99 (G25.71) Medication-Induced Acute Akathisia
+\item
+  333.85 (G24.01) Tardive Dyskinesia
+\item
+  333.72 (G24.09) Tardive Dystonia
+\item
+  333.99 (G25.71) Tardive Akathisia
+\item
+  333.1 (G25.1) Medication-Induced Postural Tremor
+\item
+  333.99 (G25.79) Other Medication-Induced Movement Disorder
+\item
+  995.29 (T43.205A) Antidepressant Discontinuation Syndrome, Initial
+  encounter
+\item
+  995.29 (T43.205D) Antidepressant Discontinuation Syndrome, Subsequent
+  encounter
+\item
+  995.29 (T43.205S) Antidepressant Discontinuation Syndrome, Sequelae
+\item
+  995.20 (T50.905A) Other Adverse Effect of Medication, Initial
+  encounter
+\item
+  995.20 (T50.905D) Other Adverse Effect of Medication, Subsequent
+  encounter
+\item
+  995.20 (T50.905S) Other Adverse Effect of Medication, Sequelae
+\end{itemize}
+
+\subsection{Other Conditions That May Be a Focus of Clinical
+Attention}\label{other-conditions-that-may-be-a-focus-of-clinical-attention}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Relational Problems Related to Family
+Upbringing}\label{relational-problems-related-to-family-upbringing}
+
+\begin{itemize}
+\tightlist
+\item
+  V61.20 (Z62.820) Parent-Child Relational Problem
+\item
+  V61.8 (Z62.891) Sibling Relational Problem
+\item
+  V61.8 (Z62.29) Upbringing Away From Parents
+\item
+  V61.29 (Z62.898) Child Affected by Parental Relationship Distress
+\end{itemize}
+
+\subsubsection{Other Problems Related to Primary Support
+Group}\label{other-problems-related-to-primary-support-group}
+
+\begin{itemize}
+\tightlist
+\item
+  V61.10 (Z63.0) Relationship Distress With Spouse or Intimate Partner
+\item
+  V61.03 (Z63.5) Disruption of Family by Separation or Divorce
+\item
+  V61.8 (Z63.8) High Expressed Emotion Level Within Family
+\item
+  V62.82 (Z63.4) Uncomplicated Bereavement
+\end{itemize}
+
+\subsection{Abuse and Neglect}\label{abuse-and-neglect}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Child Maltreatment and Neglect
+Problems}\label{child-maltreatment-and-neglect-problems}
+
+\paragraph{Child Physical Abuse}\label{child-physical-abuse}
+
+\begin{itemize}
+\tightlist
+\item
+  995.54 (T74.12XA) Child Physical Abuse, Confirmed, Initial encounter
+\item
+  995.54 (T74.12XD) Child Physical Abuse, Confirmed, Subsequent
+  encounter
+\item
+  995.54 (T76.12XA) Child Physical Abuse, Suspected, Initial encounter
+\item
+  995.54 (T76.12XD) Child Physical Abuse, Suspected, Subsequent
+  encounter
+\item
+  V61.21 (Z69.010) Other Circumstances Related to Child Physical Abuse,
+  Encounter for mental health services for victim of child abuse by
+  parent
+\item
+  V61.21 (Z69.020) Other Circumstances Related to Child Physical Abuse,
+  Encounter for mental health services for victim of nonparental child
+  abuse
+\item
+  V15.41 (Z62.810) Other Circumstances Related to Child Physical Abuse,
+  Personal history (past history) of physical abuse in childhood
+\item
+  V61.22 (Z69.011) Other Circumstances Related to Child Physical Abuse,
+  Encounter for mental health services for perpetrator of parental child
+  abuse
+\item
+  V62.83 (Z69.021) Other Circumstances Related to Child Physical Abuse,
+  Encounter for mental health services for perpetrator of nonparental
+  child abuse
+\end{itemize}
+
+\paragraph{Child Sexual Abuse}\label{child-sexual-abuse}
+
+\begin{itemize}
+\tightlist
+\item
+  995.53 (T74.22XA) Child Sexual Abuse, Confirmed, Initial encounter
+\item
+  995.53 (T74.22XD) Child Sexual Abuse, Confirmed, Subsequent encounter
+\item
+  995.53 (T76.22XA) Child Sexual Abuse, Suspected, Initial encounter
+\item
+  995.53 (T76.22XD) Child Sexual Abuse, Suspected, Subsequent encounter
+\item
+  V61.21 (Z69.010) Other Circumstances Related to Child Sexual Abuse,
+  Encounter for mental health services for victim of child sexual abuse
+  by parent
+\item
+  V61.21 (Z69.020) Other Circumstances Related to Child Sexual Abuse,
+  Encounter for mental health services for victim of nonparental child
+  sexual abuse
+\item
+  V15.41 (Z62.810) Other Circumstances Related to Child Sexual Abuse,
+  Personal history (past history) of sexual abuse in childhood
+\item
+  V61.22 (Z69.011) Other Circumstances Related to Child Sexual Abuse,
+  Encounter for mental health services for perpetrator of parental child
+  sexual abuse
+\item
+  V62.83 (Z69.021) Other Circumstances Related to Child Sexual Abuse,
+  Encounter for mental health services for perpetrator of nonparental
+  child sexual abuse
+\end{itemize}
+
+\paragraph{Child Neglect}\label{child-neglect}
+
+\begin{itemize}
+\tightlist
+\item
+  995.52 (T74.02XA) Child Neglect, Confirmed, Initial encounter
+\item
+  995.52 (T74.02XD) Child Neglect, Confirmed, Subsequent encounter
+\item
+  995.52 (T76.02XA) Child Neglect, Suspected, Initial encounter
+\item
+  995.52 (T76.02XD) Child Neglect, Suspected, Subsequent encounter Other
+  Circumstances Related to Child Neglect
+\item
+  V61.21 (Z69.010) Encounter for mental health services for victim of
+  child neglect by parent
+\item
+  V61.21 (Z69.020) Encounter for mental health services for victim of
+  nonparental child neglect
+\item
+  V15.42 (Z62.812) Personal history (past history) of neglect in
+  childhood
+\item
+  V61.22 (Z69.011) Encounter for mental health services for perpetrator
+  of parental child neglect
+\item
+  V62.83 (Z69.021) Encounter for mental health services for perpetrator
+  of nonparental child neglect
+\end{itemize}
+
+\paragraph{Child Psychological Abuse}\label{child-psychological-abuse}
+
+\begin{itemize}
+\tightlist
+\item
+  995.51 (T74.32XA) Child Psychological Abuse, Confirmed Initial
+  encounter
+\item
+  995.51 (T74.32XD) Child Psychological Abuse, Confirmed, Subsequent
+  encounter Child Psychological Abuse, Suspected
+\item
+  995.51 (T76.32XA) Initial encounter
+\item
+  995.51 (T76.32XD) Subsequent encounter Other Circumstances Related to
+  Child Psychological Abuse
+\item
+  V61.21 (Z69.010) Encounter for mental health services for victim of
+  child psychological abuse by parent
+\item
+  V61.21 (Z69.020) Encounter for mental health services for victim of
+  nonparental child psychological abuse
+\item
+  V15.42 (Z62.811) Personal history (past history) of psychological
+  abuse in childhood
+\item
+  V61.22 (Z69.011) Encounter for mental health services for perpetrator
+  of parental child psychological abuse
+\item
+  V62.83 (Z69.021) Encounter for mental health services for perpetrator
+  of nonparental child psychological abuse
+\end{itemize}
+
+\subsubsection{Adult Maltreatment and Neglect
+Problems}\label{adult-maltreatment-and-neglect-problems}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{Spouse or Partner Violence,
+Physical}\label{spouse-or-partner-violence-physical}
+
+\begin{itemize}
+\tightlist
+\item
+  995.81 (T74.11XA) Spouse or Partner Violence, Physical, Confirmed,
+  Initial encounter
+\item
+  995.81 (T74.11XD) Spouse or Partner Violence, Physical, Confirmed,
+  Subsequent encounter
+\item
+  995.81 (T76.11XA) Spouse or Partner Violence, Physical, Suspected,
+  Initial encounter
+\item
+  995.81 (T76.11XD) Spouse or Partner Violence, Physical, Suspected,
+  Subsequent encounter Other Circumstances Related to Spouse or Partner
+  Violence, Physical
+\item
+  V61.11 (Z69.11) Encounter for mental health services for victim of
+  spouse or partner violence, physical
+\item
+  V15.41 (Z91.410) Personal history (past history) of spouse or partner
+  violence, physical
+\item
+  V61.12 (Z69.12) Encounter for mental health services for perpetrator
+  of spouse or partner violence, physical
+\end{itemize}
+
+\paragraph{Spouse or Partner Violence,
+Sexual}\label{spouse-or-partner-violence-sexual}
+
+\begin{itemize}
+\tightlist
+\item
+  995.83 (T74.21XA) Spouse or Partner Violence, Sexual, Confirmed,
+  Initial encounter
+\item
+  995.83 (T74.21XD) Spouse or Partner Violence, Sexual, Confirmed,
+  Subsequent encounter
+\item
+  995.83 (T76.21XA) Spouse or Partner Violence, Sexual, Suspected,
+  Initial encounter
+\item
+  995.83 (T76.21XD) Spouse or Partner Violence, Sexual, Suspected,
+  Subsequent encounter Other Circumstances Related to Spouse or Partner
+  Violence, Sexual
+\item
+  V61.11 (Z69.81) Encounter for mental health services for victim of
+  spouse or partner violence, sexual
+\item
+  V15.41 (Z91.410) Personal history (past history) of spouse or partner
+  violence, sexual
+\item
+  V61.12 (Z69.12) Encounter for mental health services for perpetrator
+  of spouse or partner violence, sexual
+\end{itemize}
+
+\paragraph{Spouse or Partner, Neglect}\label{spouse-or-partner-neglect}
+
+\begin{itemize}
+\tightlist
+\item
+  995.85 (T74.01XA) Spouse or Partner Neglect, Confirmed, Initial
+  encounter
+\item
+  995.85 (T74.01XD) Spouse or Partner Neglect, Confirmed, Subsequent
+  encounter
+\item
+  995.85 (T76.01XA) Spouse or Partner Neglect, Suspected, Initial
+  encounter
+\item
+  995.85 (T76.01XD) Spouse or Partner Neglect, Suspected, Subsequent
+  encounter Other Circumstances Related to Spouse or Partner Neglect
+\item
+  V61.11 (Z69.11) Encounter for mental health services for victim of
+  spouse or partner neglect
+\item
+  V15.42 (Z91.412) Personal history (past history) of spouse or partner
+  neglect
+\item
+  V61.12 (Z69.12) Encounter for mental health services for perpetrator
+  of spouse or partner neglect-
+\end{itemize}
+
+\paragraph{Spouse or Partner Abuse,
+Psychological}\label{spouse-or-partner-abuse-psychological}
+
+\begin{itemize}
+\tightlist
+\item
+  995.82 (T74.31XA) Spouse or Partner Abuse, Psychological, Confirmed,
+  Initial encounter
+\item
+  995.82 (T74.31XD) Spouse or Partner Abuse, Psychological, Confirmed,
+  Subsequent encounter
+\item
+  995.82 (T76.31XA) Spouse or Partner Abuse, Psychological, Suspected,
+  Initial encounter
+\item
+  995.82 (T76.31XD) Spouse or Partner Abuse, Psychological, Suspected,
+  Subsequent encounter Other Circumstances Related to Spouse or Partner
+  Abuse, Psychological
+\item
+  V61.11 (Z69.11) Encounter for mental health services for victim of
+  spouse or partner psychological abuse
+\item
+  V15.42 (Z91.411) Personal history (past history) of spouse or partner
+  psychological abuse
+\item
+  V61.12 (Z69.12) Encounter for mental health services for perpetrator
+  of spouse or partner psychological abuse
+\end{itemize}
+
+\paragraph{Adult Abuse by Nonspouse or
+Nonpartner}\label{adult-abuse-by-nonspouse-or-nonpartner}
+
+\begin{itemize}
+\tightlist
+\item
+  995.81 (T74.11XA) Adult Physical Abuse by Nonspouse or Nonpartner,
+  Confirmed, Initial encounter
+\item
+  995.81 (T74.11XD) Adult Physical Abuse by Nonspouse or Nonpartner,
+  Confirmed, Subsequent encounter
+\item
+  995.81 (T76.11XA) Adult Physical Abuse by Nonspouse or Nonpartner,
+  Suspected, Initial encounter
+\item
+  995.81 (T76.11XD) Adult Physical Abuse by Nonspouse or Nonpartner,
+  Suspected, Subsequent encounter
+\item
+  995.83 (T74.21XA) Adult Sexual Abuse by Nonspouse or Nonpartner,
+  Confirmed, Initial encounter
+\item
+  995.83 (T74.21XD) Adult Sexual Abuse by Nonspouse or Nonpartner,
+  Confirmed, Subsequent encounter Adult Sexual Abuse by Nonspouse or
+  Nonpartner, Suspected
+\item
+  995.83 (T76.21XA) Initial encounter
+\item
+  995.83 (T76.21XD) Subsequent encounter Adult Psychological Abuse by
+  Nonspouse or Nonpartner, Confirmed
+\item
+  995.82 (T74.31XA) Initial encounter
+\item
+  995.82 (T74.31XD) Subsequent encounter Adult Psychological Abuse by
+  Nonspouse or Nonpartner, Suspected
+\item
+  995.82 (T76.31XA) Initial encounter
+\item
+  995.82 (T76.31XD) Subsequent encounter Other Circumstances Related to
+  Adult Abuse by Nonspouse or Nonpartner
+\item
+  V65.49 (Z69.81) Encounter for mental health services for victim of
+  nonspousal adult abuse
+\item
+  V62.83 (Z69.82) Encounter for mental health services for perpetrator
+  of nonspousal adult abuse
+\end{itemize}
+
+\subsection{Educational and Occupational
+Problems}\label{educational-and-occupational-problems}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Educational Problems}\label{educational-problems}
+
+\begin{itemize}
+\tightlist
+\item
+  V62.3 (Z55.9) Academic or Educational Problem
+\end{itemize}
+
+\subsubsection{Occupational Problems}\label{occupational-problems}
+
+\begin{itemize}
+\tightlist
+\item
+  V62.21 (Z56.82) Problem Related to Current Military Deployment Status
+\item
+  V62.29 (Z56.9) Other Problem Related to Employment
+\end{itemize}
+
+\subsection{Housing and Economic
+Problems}\label{housing-and-economic-problems}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Housing Problems}\label{housing-problems}
+
+\begin{itemize}
+\tightlist
+\item
+  V60.0 (Z59.0) Homelessness
+\item
+  V60.1 (Z59.1) Inadequate Housing
+\item
+  V60.89 (Z59.2) Discord With Neighbor, Lodger, or Landlord
+\item
+  V60.6 (Z59.3) Problem Related to Living in a Residential Institution
+\end{itemize}
+
+\subsubsection{Economic Problems}\label{economic-problems}
+
+\begin{itemize}
+\tightlist
+\item
+  V60.2 (Z59.4) Lack of Adequate Food or Safe Drinking Water
+\item
+  V60.2 (Z59.5) Extreme Poverty
+\item
+  V60.2 (Z59.6) Low Income
+\item
+  V60.2 (Z59.7) Insufficient Social Insurance or Welfare Support
+\item
+  V60.9 (Z59.9) Unspecified Housing or Economic Problem
+\end{itemize}
+
+\subsection{Other Problems Related to the Social
+Environment}\label{other-problems-related-to-the-social-environment}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  V62.89 (Z60.0) Phase of Life Problem
+\item
+  V60.3 (Z60.2) Problem Related to Living Alone
+\item
+  V62.4 (Z60.3) Acculturation Difficulty
+\item
+  V62.4 (Z60.4) Social Exclusion or Rejection
+\item
+  V62.4 (Z60.5) Target of (Perceived) Adverse Discrimination or
+  Persecution
+\item
+  V62.9 (Z60.9) Unspecified Problem Related to Social Environment
+\end{itemize}
+
+\subsection{Problems Related to Crime or Interaction With the Legal
+System}\label{problems-related-to-crime-or-interaction-with-the-legal-system}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  V62.89 (Z65.4) Victim of Crime
+\item
+  V62.5 (Z65.0) Conviction in Civil or Criminal Proceedings Without
+  Imprisonment
+\item
+  V62.5 (Z65.1) Imprisonment or Other Incarceration
+\item
+  V62.5 (Z65.2) Problems Related to Release From Prison
+\item
+  V62.5 (Z65.3) Problems Related to Other Legal Circumstances
+\item
+  V65.49 (Z70.9) Sex Counseling
+\item
+  V65.40 (Z71.9) Other Counseling or Consultation
+\end{itemize}
+
+\subsection{Problems Related to Other Psychosocial, Personal, and
+Environmental
+Circumstances}\label{problems-related-to-other-psychosocial-personal-and-environmental-circumstances}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  V62.89 (Z65.8) Religious or Spiritual Problem
+\item
+  V61.7 (Z64.0) Problems Related to Unwanted Pregnancy
+\item
+  V61.5 (Z64.1) Problems Related to Multiparity
+\item
+  V62.89 (Z64.4) Discord With Social Service Provider, Including
+  Probation Officer, Case Manager, or Social Services Worker
+\item
+  V62.89 (Z65.4) Victim of Terrorism or Torture
+\item
+  V62.22 (Z65.5) Exposure to Disaster, War, or Other Hostilities
+\item
+  V62.89 (Z65.8) Other Problem Related to Psychosocial Circumstances
+\item
+  V62.9 (Z65.9) ??
+\end{itemize}
+
+\subsection{Unspecified Problem Related to Unspecified Psychosocial
+Circumstances}\label{unspecified-problem-related-to-unspecified-psychosocial-circumstances}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Other Circumstances of Personal
+History}\label{other-circumstances-of-personal-history}
+
+\begin{itemize}
+\tightlist
+\item
+  V15.49 (Z91.49) Other Personal History of Psychological Trauma
+\item
+  V15.59 (Z91.5) Personal History of Self-Harm
+\item
+  V62.22 (Z91.82) Personal History of Military Deployment
+\item
+  V15.89 (Z91.89) Other Personal Risk Factors
+\item
+  V69.9 (Z72.9) Problem Related to Lifestyle
+\item
+  V71.01 (Z72.811) Adult Antisocial Behavior
+\item
+  V71.02 (Z72.810) Child or Adolescent Antisocial Behavior
+\end{itemize}
+
+\subsubsection{Problems Related to Access to Medical and Other Health
+Care}\label{problems-related-to-access-to-medical-and-other-health-care}
+
+\begin{itemize}
+\tightlist
+\item
+  V63.9 (Z75.3) Unavailability or Inaccessibility of Health Care
+  Facilities
+\item
+  V63.8 (Z75.4) Unavailability or Inaccessibility of Other Helping
+  Agencies
+\end{itemize}
+
+\subsubsection{Nonadherence to Medical
+Treatment}\label{nonadherence-to-medical-treatment}
+
+\begin{itemize}
+\tightlist
+\item
+  V15.81 (Z91.19) Nonadherence to Medical Treatment
+\item
+  278.00 (E66.9) Overweight or Obesity
+\item
+  V65.2 (Z76.5) Malingering
+\item
+  V40.31 (Z91.83) Wandering Associated With a Mental Disorder
+\item
+  V62.89 (R41.83) Borderline Intellectual Functioning
+\end{itemize}
+
+\subsection{Diagnoses Deferred}\label{diagnoses-deferred}
+
+\begin{itemize}
+\tightlist
+\item
+  Axis I: 799.9 Diagnosis or Condition Deferred on Axis I
+\item
+  Axis II: 799.9 Diagnosis Deferred on Axis II
+\end{itemize}
+
+
+
+
+\end{document}
